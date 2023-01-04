@@ -8,11 +8,10 @@ import {
   Center,
   Image,
 } from '@mantine/core';
-import { IconSettings, IconMessageCircle, IconNotes } from '@tabler/icons';
+// import { IconSettings, IconMessageCircle, IconNotes } from '@tabler/icons';
 import ProgressBar from './ProgressBar';
 import Badges from './Badges';
 
-import { useAuth0 } from '@auth0/auth0-react';
 import { useAuth } from './AuthContext';
 
 const Profile = () => {
@@ -34,17 +33,17 @@ const Profile = () => {
 
         <Menu.Dropdown align="center">
           <Image src={cadetInfo.photoLink} alt="it's me" size="xl" />
-          <Title order={4}>Welcome {cadetInfo.name}</Title>
+          <Title order={4}>Cadet {cadetInfo.name}</Title>
           <br />
           <ProgressBar />
-          <Title order={6}>Badges Earned:</Title>
+          <Title order={6}>Section Badges Earned:</Title>
           <Badges />
           <br />
-          <Menu.Label>Settings</Menu.Label>
+          {/* <Menu.Label>Settings</Menu.Label> */}
 
-          <Menu.Item icon={<IconMessageCircle size={14} />}>Messages</Menu.Item>
-          <Menu.Item icon={<IconNotes size={14} />}>Notes</Menu.Item>
-          <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item>
+          {/* <Menu.Item icon={<IconMessageCircle size={14} />}>Messages</Menu.Item> */}
+          {/* <Menu.Item icon={<IconNotes size={14} />}>Notes</Menu.Item> */}
+          {/* <Menu.Item icon={<IconSettings size={14} />}>Settings</Menu.Item> */}
         </Menu.Dropdown>
       </Menu>
     </div>

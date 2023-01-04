@@ -47,7 +47,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/2')}
+          onClick={() => navigate('/forum/2/2')}
           color="orange"
           ta="center"
         >
@@ -61,7 +61,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/3')}
+          onClick={() => navigate('/forum/3/7')}
           color="orange"
           ta="center"
         >
@@ -76,7 +76,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/4')}
+          onClick={() => navigate('/forum/4/11')}
           color="orange"
           ta="center"
         >
@@ -104,7 +104,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/6')}
+          onClick={() => navigate('/forum/6/28')}
           color="orange"
           ta="center"
         >
@@ -118,7 +118,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/7')}
+          onClick={() => navigate('/forum/7/33')}
           color="orange"
           ta="center"
         >
@@ -132,7 +132,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/8')}
+          onClick={() => navigate('/forum/8/41')}
           color="orange"
           ta="center"
         >
@@ -146,7 +146,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/9')}
+          onClick={() => navigate('/forum/9/47')}
           color="orange"
           ta="center"
         >
@@ -160,7 +160,7 @@ const ForumNavlinks = () => {
           fullWidth
           variant="light"
           className={classes.button}
-          onClick={() => navigate('/forum/10')}
+          onClick={() => navigate('/forum/10/62')}
           color="orange"
           ta="center"
         >

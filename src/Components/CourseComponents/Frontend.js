@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Button, Group, Text, Image } from '@mantine/core';
+import { Button, Group, Text, Image, Title } from '@mantine/core';
 import starpic from '../../images/Frontend-map.png';
-// import ModalBtn from '../ModalBtn';
 import MarkCompleteBtn from '../MarkCompleteBtn';
 import '../css/Frontend.css';
 import axios from 'axios';
@@ -65,7 +64,6 @@ function Frontend() {
         let chapsCompleted = {};
 
         for (let i = 0; i < response2.data.length; i++) {
-          // console.log('chaptId', response2.data[i].chapterId);
           chapsCompleted[response2.data[i].chapterId] = true;
         }
 
@@ -74,7 +72,7 @@ function Frontend() {
         console.log(err.response.data);
       }
     };
-    // sectId();
+
     fetchChapters();
   }, [cadetInfo, sectionId, markCompleted]);
 
@@ -130,9 +128,10 @@ function Frontend() {
 
   return (
     <>
-      <div style={{ height: 800, marginLeft: 300, paddingTop: 40 }}>
-        <Image height={900} src={starpic} />
-      </div>
+      <Title order={3} color="yellow">
+        Section: Frontend
+      </Title>
+      <Image className="star-pic" src={starpic} />
       <Group position="center">
         <div className="Chapter-1-btn">
           <ModelTitle id={btn1.name} />
@@ -157,7 +156,7 @@ function Frontend() {
               openModal({
                 title: 'FRONTEND',
                 size: '55%',
-                overflow: 'auto',
+                overflow: 'inside',
 
                 children: (
                   <>

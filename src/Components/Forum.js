@@ -59,8 +59,8 @@ const Forum = () => {
             {chapterId ? (
               <ForumChapter />
             ) : (
-              <Title order={1} color="yellow">
-                'No Forum Chats'
+              <Title order={3} color="yellow">
+                =No Forum Chats=
               </Title>
             )}
           </Grid.Col>

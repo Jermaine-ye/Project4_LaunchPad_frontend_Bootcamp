@@ -1,10 +1,9 @@
 import React from 'react';
-import { Title, Paper } from '@mantine/core';
+import starpic from '../../images/empty-map.png';
 import DisplayMarkdown from '../DisplayMarkdown';
 import { useState, useEffect } from 'react';
-import { Button, Group, Text, Image } from '@mantine/core';
-import starpic from '../../images/Frontend-map.png';
-// import ModalBtn from '../ModalBtn';
+import { Button, Group, Text, Image, Title } from '@mantine/core';
+
 import MarkCompleteBtn from '../MarkCompleteBtn';
 import '../css/Frontend.css';
 import axios from 'axios';
@@ -114,11 +113,15 @@ function Welcome() {
 
   return (
     <>
+      <Title order={3} color="yellow">
+        Section: Welcome to Rocket
+      </Title>
+      <Image className="star-pic" src={starpic} />
       {/* <div style={{ height: 800, marginLeft: 300, paddingTop: 40 }}>
         <Image height={900} src={starpic} />
       </div> */}
       <Group position="center">
-        <div className="Chapter-1-btn">
+        <div className="Sect1-Chapter-1-btn">
           <ModelTitle id={btn1.name} />
           <Button
             id={1}

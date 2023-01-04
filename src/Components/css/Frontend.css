@@ -1,56 +1,56 @@
 .Chapter-1-btn {
   position: fixed;
-  top: 220px;
+  top: 275px;
   /* bottom: 600px; */
-  left: 530px;
+  left: 475px;
 }
 .Chapter-2-btn {
   position: fixed;
-  bottom: 200px;
-  left: 740px;
+  bottom: 210px;
+  left: 710px;
 }
 .Chapter-3-btn {
   position: fixed;
-  bottom: 400px;
+  bottom: 410px;
   right: 780px;
 }
 .Chapter-4-btn {
   position: fixed;
-  bottom: 60px;
-  right: 590px;
+  bottom: 70px;
+  right: 595px;
 }
 .Chapter-5-btn {
   position: fixed;
-  bottom: 370px;
-  right: 220px;
+  bottom: 390px;
+  right: 210px;
 }
 .Chapter-6-btn {
   position: fixed;
-  top: 230px;
-  right: 440px;
+  top: 280px;
+  right: 420px;
 }
 .Chapter-7-btn {
   position: fixed;
-  top: 275px;
-  right: 610px;
+  top: 330px;
+  right: 600px;
 }
 .Chapter-8-btn {
   position: fixed;
-  top: 125px;
-  right: 650px;
+  top: 190px;
+  right: 700px;
 }
 .Chapter-9-btn {
   position: fixed;
-  top: 35px;
-  right: 540px;
+  top: 105px;
+  right: 560px;
 }
 .Chapter-10-btn {
   position: fixed;
-  top: 110px;
-  right: 410px;
+  top: 165px;
+  right: 400px;
 }
 .Chapter-11-btn {
   position: fixed;
-  top: 65px;
+  top: 120px;
   right: 190px;
 }

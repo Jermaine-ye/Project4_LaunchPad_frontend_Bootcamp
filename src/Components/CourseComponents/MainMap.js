@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, Group, Text, Image, HoverCard } from '@mantine/core';
+import { Button, Group, Text, Image, HoverCard, Title } from '@mantine/core';
 import starpic from '../../images/Main tracker-01.png';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -81,9 +81,10 @@ function MainMap() {
 
   return (
     <>
-      <div style={{ height: 700, marginLeft: 50, paddingTop: 50 }}>
-        <Image height={900} src={starpic} />
-      </div>
+      <Title order={3} color="yellow">
+        Sections Map
+      </Title>
+      <Image className="star-pic-sect" src={starpic} />
       <Group position="center">
         <div className="Section-1-btn">
           <HoverCard
@@ -122,11 +123,6 @@ function MainMap() {
               >
                 {btn1.id}
               </Button>
-              {/* <MainMapBtn
-                completedChaps={completedChaps}
-                id={btn1.id}
-                navigate={navigate}
-              /> */}
             </HoverCard.Target>
             <HoverCard.Dropdown>
               <Text fw={500} size="sm">

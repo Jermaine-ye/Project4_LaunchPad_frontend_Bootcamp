@@ -75,7 +75,9 @@ const ForumChapter = () => {
           <SLPostForm chapter={chapterId} onPostUpdate={onPostUpdate} />
         </Card>
       ) : (
-        ' '
+        <Title order={3} color="yellow">
+          =No Forum Chats=
+        </Title>
       )}
 
       {/* <SLPostForm chapter={chapterId} onPostUpdate={onPostUpdate} /> */}

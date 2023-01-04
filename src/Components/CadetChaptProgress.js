@@ -14,15 +14,8 @@ const useStyles = createStyles((theme) => ({
     cursor: 'auto',
 
     '&:hover': {
-      // boxShadow: theme.shadows.md,
-
       backgroundColor: theme.colors.blue,
     },
-
-    // '&:focus': {
-    //   boxShadow: theme.shadows.lg,
-    //   backgroundColor: theme.colors.red[7],
-    // },
   },
 }));
 
@@ -31,7 +24,6 @@ const CadetChaptProgress = ({ cadetId, cadetName }) => {
   //here map out the cadetChapters
   const [progress, setProgress] = useState([]);
   const [singleProgress, setSingleProgress] = useState([]);
-
   const [completedChaps, setCompletedChaps] = useState({});
 
   const { sectionId } = useParams();
@@ -44,7 +36,6 @@ const CadetChaptProgress = ({ cadetId, cadetName }) => {
         const response = await axios.get(
           //ALL chapters completed by single cadet across whole BC
           `${BACKEND_URL}/cadetChapters/section-progress-status?cadetId=${cadetId}&sectionId=${sectionId}`
-          // `${BACKEND_URL}/cadetChapters/progress-status?cadetId=${cadetId}`
         );
 
         setProgress(response.data);
@@ -66,14 +57,12 @@ const CadetChaptProgress = ({ cadetId, cadetName }) => {
         {chapter.completed === true ? (
           <>
             <Button className={classes.button} radius="xl">
-              {/* {chapter.chapterId} */}
               {chapter.chapter.name}
             </Button>
           </>
         ) : (
           <>
             <Button className={classes.button} radius="xl">
-              {/* {chapter.chapterId} */}
               {chapter.chapter.name}
             </Button>
           </>

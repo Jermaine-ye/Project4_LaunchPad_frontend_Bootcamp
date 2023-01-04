@@ -31,13 +31,9 @@
 }
 
 .bg-container {
-  /* margin-top: 20px; */
-
   background-image: url('./images/star-bg-e.jpg');
-  /* height: 100vh; */
   height: 100%;
   background-repeat: no-repeat;
-  /* width: 100%; */
   background-size: cover;
   margin-left: 280px;
 }
@@ -120,4 +116,22 @@ iframe {
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.star-pic {
+  /* margin-top: 20px; */
+  height: 1000px;
+}
+.star-pic-sect {
+  /* margin-top: 20px; */
+  padding-top: 10px;
+  padding-left: 50px;
+  height: 1000px;
+}
+
+.Sect1-Chapter-1-btn {
+  position: fixed;
+  top: 400px;
+  /* bottom: 600px; */
+  left: 1020px;
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React from 'react';
+import { useState, useEffect } from 'react';
 import {
   AppShell,
   Burger,
@@ -9,39 +9,40 @@ import {
   Text,
   Image,
   Button,
-  useMantineTheme,
-} from "@mantine/core";
+  Title,
+} from '@mantine/core';
 
-import Profile from "./Profile";
-import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
-import { ThemeContext } from "@emotion/react";
-import DisplayMarkdown from "./DisplayMarkdown";
-import CadetDashboard from "./CadetDashboard";
-import { useAuth } from "./AuthContext";
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import CadetChaptProgress from "./CadetChaptProgress";
-import Forum from "./Forum";
-import ForumChapter from "./ForumChapter";
-import ForumSection from "./ForumSection";
-import LogoutButton from "./LogoutButton";
-import axios from "axios";
-import { BACKEND_URL } from "../constants";
+import Profile from './Profile';
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
+import { ThemeContext } from '@emotion/react';
+import DisplayMarkdown from './DisplayMarkdown';
+import CadetDashboard from './CadetDashboard';
+import { useAuth } from './AuthContext';
+import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
+import CadetChaptProgress from './CadetChaptProgress';
+import Forum from './Forum';
+import ForumChapter from './ForumChapter';
+import ForumSection from './ForumSection';
+import LogoutButton from './LogoutButton';
+import axios from 'axios';
+import { BACKEND_URL } from '../constants';
 
-import Rlogo from "../images/rocket-logo.png";
-import { IconHome2, IconCalendarEvent } from "@tabler/icons";
+import Rlogo from '../images/rocket-logo.png';
+import { IconHome2, IconCalendarEvent } from '@tabler/icons';
 
-import MainMap from "./CourseComponents/MainMap";
+import MainMap from './CourseComponents/MainMap';
 
-import SLLandingPage from "./SLLandingPage";
-import Schedule from "./Schedule";
-import Loading from "./Loading";
-import CadetProgress from "./CadetProgress";
-import GitHubSubmissionsDisplay from "./GitHubSubmissionsDisplay";
+import SLLandingPage from './SLLandingPage';
+import Schedule from './Schedule';
+import Loading from './Loading';
+import CadetProgress from './CadetProgress';
+import GitHubSubmissionsDisplay from './GitHubSubmissionsDisplay';
 
 const SLDashboard = () => {
   const [opened, setOpened] = useState(false);
   const { user, isAuthenticated } = useAuth0();
-  const { updateSlInfo } = useAuth();
+  const { updateSlInfo, slInfo } = useAuth();
+
   const [submissionsData, setSubmissionsData] = useState([]);
 
   const getAllInfo = async () => {
@@ -69,7 +70,7 @@ const SLDashboard = () => {
       try {
         const response = await axios.get(`${BACKEND_URL}/gitHubSubmissions`);
 
-        console.log("all submissions info", response.data);
+        console.log('all submissions info', response.data);
         setSubmissionsData(response.data);
       } catch (err) {
         console.log(err.response.data);
@@ -102,15 +103,23 @@ const SLDashboard = () => {
               className="nav-logo"
               style={{
                 width: 250,
-                marginLeft: "auto",
-                marginRight: "auto",
+                marginLeft: 'auto',
+                marginRight: 'auto',
               }}
             >
               <Image src={Rlogo} alt="rocket logo" />
             </div>
+            <br />
           </Navbar.Section>
+          <Title order={5} color="white">
+            Welcome <br />
+          </Title>
+          <Title order={3} color="yellow">
+            {slInfo.name}
+          </Title>
+
           <Navbar.Section grow mt="lg">
-            <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
               <Text
                 ta="center"
                 fw={500}
@@ -140,7 +149,7 @@ const SLDashboard = () => {
                 variant="link"
                 to="/schedule"
               >
-                {" "}
+                {' '}
                 <IconCalendarEvent color="white" size={13} />
                 Schedule
               </Text>
@@ -151,7 +160,7 @@ const SLDashboard = () => {
                 variant="link"
                 to="/submissions"
               >
-                {" "}
+                {' '}
                 <IconCalendarEvent color="white" size={13} />
                 GitHub Submissions
               </Text>
