@@ -19,7 +19,7 @@ import { showNotification } from '@mantine/notifications';
 
 const useStyles = createStyles((theme) => ({
   body: {
-    paddingLeft: 54,
+    paddingLeft: 0,
     paddingTop: theme.spacing.sm,
   },
   card: {
@@ -29,11 +29,12 @@ const useStyles = createStyles((theme) => ({
     transition: 'transform 150ms ease, box-shadow 100ms ease',
     padding: theme.spacing.xl,
     paddingLeft: theme.spacing.xl * 2,
+    height: 170,
 
-    '&:hover': {
-      boxShadow: theme.shadows.md,
-      transform: 'scale(1.02)',
-    },
+    // '&:hover': {
+    //   boxShadow: theme.shadows.md,
+    //   transform: 'scale(1.02)',
+    // },
 
     '&::before': {
       content: '""',
@@ -75,7 +76,7 @@ export function PostBlock(props) {
           props.onPostDelete(id);
           showNotification({
             message: 'Post deleted!',
-            color: 'teal',
+            color: 'red',
           });
           console.log('post successfully deleted.');
         } catch (error) {

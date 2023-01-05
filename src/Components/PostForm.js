@@ -1,26 +1,26 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Button } from "@mantine/core";
-import { BACKEND_URL } from "../constants";
-import axios from "axios";
-import { RichTextEditor } from "@mantine/rte";
-import { showNotification } from "@mantine/notifications";
+import React, { useState, useEffect, useCallback } from 'react';
+import { Button } from '@mantine/core';
+import { BACKEND_URL } from '../constants';
+import axios from 'axios';
+import { RichTextEditor } from '@mantine/rte';
+import { showNotification } from '@mantine/notifications';
 import {
   getDownloadURL,
   ref as storageRef,
   uploadBytes,
-} from "firebase/storage";
-import { storage } from "../firebase";
+} from 'firebase/storage';
+import { storage } from '../firebase';
 
-const UPLOAD_IMAGES_FOLDER_NAME = "postImageUploads";
+const UPLOAD_IMAGES_FOLDER_NAME = 'postImageUploads';
 
 const PostForm = ({ chapter, cadet, onPostUpdate }) => {
-  const [value, onChange] = useState("<p><br></p>");
+  const [value, onChange] = useState('<p><br></p>');
   const [post, setPost] = useState({
     author: null,
-    authorName: "",
-    authorImage: "",
+    authorName: '',
+    authorImage: '',
     chapterId: null,
-    content: "",
+    content: '',
     createdAt: null,
   });
 
@@ -45,7 +45,7 @@ const PostForm = ({ chapter, cadet, onPostUpdate }) => {
         uploadBytes(fileRef, file).then(() => {
           getDownloadURL(fileRef)
             .then((downloadUrl) => resolve(downloadUrl))
-            .catch(() => reject(new Error("Upload failed")));
+            .catch(() => reject(new Error('Upload failed')));
         });
       }),
     []
@@ -60,24 +60,24 @@ const PostForm = ({ chapter, cadet, onPostUpdate }) => {
         })
         .then((res) => {
           showNotification({
-            message: "Post Created!",
-            color: "teal",
+            message: 'Post Created!',
+            color: 'teal',
           });
           onPostUpdate(res.data);
           setPost({
             author: null,
-            authorName: "",
-            authorImage: "",
+            authorName: '',
+            authorImage: '',
             chapterId: null,
-            content: "",
+            content: '',
             createdAt: null,
           });
-          onChange("");
+          onChange('');
         });
     } catch (error) {
       showNotification({
         message: error.message,
-        color: "red",
+        color: 'red',
       });
     }
   };
@@ -85,6 +85,7 @@ const PostForm = ({ chapter, cadet, onPostUpdate }) => {
   return (
     <div>
       <RichTextEditor
+        styles={{ overflow: 'auto' }}
         id="rte"
         value={value}
         onChange={onChange}
@@ -92,7 +93,7 @@ const PostForm = ({ chapter, cadet, onPostUpdate }) => {
         placeholder="Post your messages here"
       />
 
-      {value === "<p><br></p>" ? (
+      {value === '<p><br></p>' ? (
         <Button
           variant="filled"
           color="tan"

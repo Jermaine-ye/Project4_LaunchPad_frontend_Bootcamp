@@ -50,11 +50,13 @@ const ChapterPosts = (props) => {
           />
         ))}
       </List>
+
       <PostForm
         chapter={props.chapter}
         cadet={props.cadet}
         onPostUpdate={onPostUpdate}
       />
+
       <br />
     </div>
   );

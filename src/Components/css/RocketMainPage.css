@@ -1,14 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap');
+
 .Rocket-main-page {
-  background-image: url("../../images/Rocket-Main-Pg.png");
+  background-image: url('../../images/Rocket-Main-Pg.png');
   height: 100vh;
   /* height: 100%; */
   background-repeat: no-repeat;
   /* width: 100%; */
   background-size: cover;
+  font-family: Urbanist, sans-serif;
 }
 
 .Login-btn {
   position: fixed;
-  top: 50px;
-  right: 150px;
+  top: 62px;
+  right: 190px;
+  border: 1px;
+  font-weight: 400;
+  font-family: Urbanist, sans-serif;
 }

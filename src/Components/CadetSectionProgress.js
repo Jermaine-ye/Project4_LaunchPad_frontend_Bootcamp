@@ -45,10 +45,10 @@ const CadetSectionProgress = ({ cadetId }) => {
           </>
         ) : (
           <>
-            <Button className="section-btn" color="gray">
+            {/* <Button className="section-btn" color="gray">
               {section.sectionId}
               {section.completed}
-            </Button>
+            </Button> */}
           </>
         )}
       </>

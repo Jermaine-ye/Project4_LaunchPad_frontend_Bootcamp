@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Textarea, Button } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { BACKEND_URL } from '../constants';
 import axios from 'axios';
 import { RichTextEditor } from '@mantine/rte';
-import { useAuth } from './AuthContext';
+// import { RichTextEditor } from '@mantine/tiptap';
+import { showNotification } from '@mantine/notifications';
+import { closeModal } from '@mantine/modals';
 import {
   getDownloadURL,
   ref as storageRef,
   uploadBytes,
 } from 'firebase/storage';
 import { storage } from '../firebase';
+
 const UPLOAD_IMAGES_FOLDER_NAME = 'postImageUploads';
 
-const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
-  const { slInfo } = useAuth();
-  const [value, onChange] = useState('<p><br></p>');
+const SLEditPost = (props) => {
+  const [value, onChange] = useState(props.post.content);
   const [post, setPost] = useState({
     sl: null,
     author: null,
@@ -22,20 +24,19 @@ const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
     authorImage: '',
     chapterId: null,
     content: '',
-    createdAt: null,
   });
 
+  console.log('props in EditPost', props);
   useEffect(() => {
     setPost({
-      sl: slInfo.id,
-      author: null,
-      authorName: slInfo.name,
-      authorImage: slInfo.photoLink,
-      chapterId: chapter,
+      sl: props.post.sl,
+      author: props.post.author,
+      authorName: props.post.authorName,
+      authorImage: props.post.authorImage,
+      chapterId: props.post.chapterId,
       content: value,
-      createdAt: new Date().toLocaleString(),
     });
-  }, [value, slInfo.id, slInfo.name, slInfo.photoLink, chapter]);
+  }, [props.post, value]);
 
   const handleImageUpload = useCallback(
     (file) =>
@@ -53,52 +54,51 @@ const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
     []
   );
 
-  console.log('post content', post.content);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post(`${BACKEND_URL}/posts`, {
-        ...post,
-      })
-      .then((res) => {
-        console.log('in handle submit', res);
-        onPostUpdate(res.data);
-        setPost({
-          // author: null,
-          sl: null,
-          authorName: '',
-          authorImage: '',
-          chapterId: null,
-          content: '',
-          createdAt: null,
+  const handleSubmit = (id) => {
+    try {
+      axios
+        .put(`${BACKEND_URL}/posts/${id}`, {
+          ...post,
+        })
+        .then(() => {
+          showNotification({
+            message: 'Post edited!',
+            color: 'orange',
+          });
+          setPost({
+            sl: null,
+            author: null,
+            authorName: '',
+            authorImage: '',
+            chapterId: null,
+            content: '',
+          });
+          onChange('');
         });
-        onChange('');
+    } catch (error) {
+      showNotification({
+        message: error.message,
+        color: 'red',
       });
+    }
   };
-  console.log(value);
 
   return (
-    <div className="sl-post-form ">
+    <div>
       <RichTextEditor
-        styles={{ overflow: 'auto' }}
         id="rte"
         value={value}
         onChange={onChange}
         onImageUpload={handleImageUpload}
-        placeholder="Post your messages here"
-        // id="rte"
-        // value={value}
-        // onChange={onChange}
-        // placeholder="Post your messages here"
+        placeholder="lalala"
       />
-
       {value === '<p><br></p>' ? (
         <Button
           variant="filled"
           color="tan"
-          size="xs"
-          mt="sm"
-          radius="sm"
+          size="sm"
+          mt="md"
+          radius="md"
           disabled
         >
           Submit
@@ -107,18 +107,19 @@ const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
         <Button
           variant="filled"
           color="tan"
-          size="xs"
-          mt="sm"
-          radius="sm"
-          onClick={handleSubmit}
+          size="sm"
+          mt="md"
+          radius="md"
+          onClick={() => {
+            handleSubmit(props.post.id);
+            closeModal('slEdit');
+          }}
         >
-          Submit
+          Save
         </Button>
       )}
-      <br />
-      <br />
     </div>
   );
 };
 
-export default SLPostForm;
+export default SLEditPost;

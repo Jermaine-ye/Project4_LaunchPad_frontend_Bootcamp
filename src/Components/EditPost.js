@@ -1,32 +1,34 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Button } from "@mantine/core";
-import { BACKEND_URL } from "../constants";
-import axios from "axios";
-import { RichTextEditor } from "@mantine/rte";
-import { showNotification } from "@mantine/notifications";
-import { closeModal } from "@mantine/modals";
+import React, { useState, useEffect, useCallback } from 'react';
+import { Button } from '@mantine/core';
+import { BACKEND_URL } from '../constants';
+import axios from 'axios';
+import { RichTextEditor } from '@mantine/rte';
+import { showNotification } from '@mantine/notifications';
+import { closeModal } from '@mantine/modals';
 import {
   getDownloadURL,
   ref as storageRef,
   uploadBytes,
-} from "firebase/storage";
-import { storage } from "../firebase";
+} from 'firebase/storage';
+import { storage } from '../firebase';
 
-const UPLOAD_IMAGES_FOLDER_NAME = "postImageUploads";
+const UPLOAD_IMAGES_FOLDER_NAME = 'postImageUploads';
 
 const EditPost = (props) => {
   const [value, onChange] = useState(props.post.content);
   const [post, setPost] = useState({
+    sl: null,
     author: null,
-    authorName: "",
-    authorImage: "",
+    authorName: '',
+    authorImage: '',
     chapterId: null,
-    content: "",
+    content: '',
   });
 
-  console.log("props in EditPost", props);
+  console.log('props in EditPost', props);
   useEffect(() => {
     setPost({
+      sl: props.post.sl,
       author: props.post.author,
       authorName: props.post.authorName,
       authorImage: props.post.authorImage,
@@ -45,7 +47,7 @@ const EditPost = (props) => {
         uploadBytes(fileRef, file).then(() => {
           getDownloadURL(fileRef)
             .then((downloadUrl) => resolve(downloadUrl))
-            .catch(() => reject(new Error("Upload failed")));
+            .catch(() => reject(new Error('Upload failed')));
         });
       }),
     []
@@ -59,22 +61,23 @@ const EditPost = (props) => {
         })
         .then(() => {
           showNotification({
-            message: "Post edited!",
-            color: "teal",
+            message: 'Post edited!',
+            color: 'orange',
           });
           setPost({
+            sl: null,
             author: null,
-            authorName: "",
-            authorImage: "",
+            authorName: '',
+            authorImage: '',
             chapterId: null,
-            content: "",
+            content: '',
           });
-          onChange("");
+          onChange('');
         });
     } catch (error) {
       showNotification({
         message: error.message,
-        color: "red",
+        color: 'red',
       });
     }
   };
@@ -89,7 +92,7 @@ const EditPost = (props) => {
         placeholder="Post your messages here"
       />
 
-      {value === "<p><br></p>" ? (
+      {value === '<p><br></p>' ? (
         <Button
           variant="filled"
           color="tan"
@@ -109,7 +112,7 @@ const EditPost = (props) => {
           radius="md"
           onClick={() => {
             handleSubmit(props.post.id);
-            closeModal("edit");
+            closeModal('edit');
           }}
         >
           Save

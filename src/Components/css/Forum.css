@@ -41,6 +41,21 @@
 }
 
 .post-background {
-  height: 680px;
+  height: 540px;
+  width: 925px;
   overflow: auto;
+}
+
+.sl-post-form {
+  position: fixed;
+  bottom: 150px;
+  width: 925px;
+}
+
+/* .form-submit-btn {
+
+} */
+
+.forum-null-msg {
+  padding-top: 200px;
 }
