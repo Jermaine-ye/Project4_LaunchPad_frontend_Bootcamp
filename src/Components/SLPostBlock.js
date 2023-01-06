@@ -1,5 +1,5 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 import {
   createStyles,
   Text,
@@ -9,14 +9,14 @@ import {
   Paper,
   Menu,
   ActionIcon,
-} from '@mantine/core';
-import { openModal } from '@mantine/modals';
-import { IconPencil, IconTrash, IconDots } from '@tabler/icons';
-import { BACKEND_URL } from '../constants';
-import { openConfirmModal } from '@mantine/modals';
-import { showNotification } from '@mantine/notifications';
-import SLEditPost from './SLEditPost';
-import { useAuth } from './AuthContext';
+} from "@mantine/core";
+import { openModal } from "@mantine/modals";
+import { IconPencil, IconTrash, IconDots } from "@tabler/icons";
+import { BACKEND_URL } from "../constants";
+import { openConfirmModal } from "@mantine/modals";
+import { showNotification } from "@mantine/notifications";
+import SLEditPost from "./SLEditPost";
+import { useAuth } from "./AuthContext";
 
 const useStyles = createStyles((theme) => ({
   body: {
@@ -24,22 +24,22 @@ const useStyles = createStyles((theme) => ({
     paddingTop: theme.spacing.sm,
   },
   card: {
-    position: 'relative',
-    cursor: 'pointer',
-    overflow: 'visible',
-    transition: 'transform 150ms ease, box-shadow 100ms ease',
+    position: "relative",
+    cursor: "pointer",
+    overflow: "visible",
+    transition: "transform 150ms ease, box-shadow 100ms ease",
     padding: theme.spacing.xl,
     paddingLeft: theme.spacing.xl * 2,
-    height: 170,
+    height: "auto",
 
     // '&:hover': {
     //   boxShadow: theme.shadows.md,
     //   transform: 'scale(1.02)',
     // },
 
-    '&::before': {
+    "&::before": {
       content: '""',
-      position: 'absolute',
+      position: "absolute",
       top: 0,
       bottom: 0,
       left: 0,
@@ -68,11 +68,16 @@ export function SLPostBlock({
 
   const handleEdit = async (post) => {
     openModal({
-      modalId: 'slEdit',
-      size: 'auto',
-      overflow: 'auto',
-
-      children: <SLEditPost post={post} />,
+      modalId: "slEdit",
+      size: "auto",
+      overflow: "auto",
+      children: (
+        <SLEditPost
+          post={post}
+          onPostDelete={onPostDelete}
+          onPostUpdate={onPostUpdate}
+        />
+      ),
     });
   };
 
@@ -84,23 +89,23 @@ export function SLPostBlock({
 
   const handleDelete = async (id) => {
     openConfirmModal({
-      title: 'Confirm deleting this post?',
-      labels: { confirm: 'Delete', cancel: 'Cancel' },
-      confirmProps: { color: 'red' },
-      onCancel: () => console.log('Cancel'),
+      title: "Confirm deleting this post?",
+      labels: { confirm: "Delete", cancel: "Cancel" },
+      confirmProps: { color: "red" },
+      onCancel: () => console.log("Cancel"),
       onConfirm: async () => {
         try {
           await axios.delete(`${BACKEND_URL}/posts/${id}`);
           onPostDelete(id);
           showNotification({
-            message: 'Post deleted!',
-            color: 'red',
+            message: "Post deleted!",
+            color: "red",
           });
-          console.log('post successfully deleted.');
+          console.log("post successfully deleted.");
         } catch (error) {
           showNotification({
             message: error.message,
-            color: 'red',
+            color: "red",
           });
         }
       },

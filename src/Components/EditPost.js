@@ -101,7 +101,7 @@ const EditPost = (props) => {
           radius="md"
           disabled
         >
-          Submit
+          Save
         </Button>
       ) : (
         <Button
