@@ -1,27 +1,27 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Textarea, Button } from "@mantine/core";
-import { BACKEND_URL } from "../constants";
-import axios from "axios";
-import { RichTextEditor } from "@mantine/rte";
-import { useAuth } from "./AuthContext";
+import React, { useState, useEffect, useCallback } from 'react';
+import { Button } from '@mantine/core';
+import { BACKEND_URL } from '../constants';
+import axios from 'axios';
+import { RichTextEditor } from '@mantine/rte';
+import { useAuth } from './AuthContext';
 import {
   getDownloadURL,
   ref as storageRef,
   uploadBytes,
-} from "firebase/storage";
-import { storage } from "../firebase";
-const UPLOAD_IMAGES_FOLDER_NAME = "postImageUploads";
+} from 'firebase/storage';
+import { storage } from '../firebase';
+const UPLOAD_IMAGES_FOLDER_NAME = 'postImageUploads';
 
 const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
   const { slInfo } = useAuth();
-  const [value, onChange] = useState("<p><br></p>");
+  const [value, onChange] = useState('<p><br></p>');
   const [post, setPost] = useState({
     sl: null,
     author: null,
-    authorName: "",
-    authorImage: "",
+    authorName: '',
+    authorImage: '',
     chapterId: null,
-    content: "",
+    content: '',
     createdAt: null,
   });
 
@@ -47,13 +47,13 @@ const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
         uploadBytes(fileRef, file).then(() => {
           getDownloadURL(fileRef)
             .then((downloadUrl) => resolve(downloadUrl))
-            .catch(() => reject(new Error("Upload failed")));
+            .catch(() => reject(new Error('Upload failed')));
         });
       }),
     []
   );
 
-  console.log("post content", post.content);
+  console.log('post content', post.content);
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -61,18 +61,17 @@ const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
         ...post,
       })
       .then((res) => {
-        console.log("in handle submit", res);
+        console.log('in handle submit', res);
         onPostUpdate(res.data);
         setPost({
-          // author: null,
           sl: null,
-          authorName: "",
-          authorImage: "",
+          authorName: '',
+          authorImage: '',
           chapterId: null,
-          content: "",
+          content: '',
           createdAt: null,
         });
-        onChange("");
+        onChange('');
       });
   };
   console.log(value);
@@ -85,13 +84,9 @@ const SLPostForm = ({ sl, onPostUpdate, chapter }) => {
         onChange={onChange}
         onImageUpload={handleImageUpload}
         placeholder="Post your messages here"
-        // id="rte"
-        // value={value}
-        // onChange={onChange}
-        // placeholder="Post your messages here"
       />
 
-      {value === "<p><br></p>" ? (
+      {value === '<p><br></p>' ? (
         <Button
           variant="filled"
           color="tan"

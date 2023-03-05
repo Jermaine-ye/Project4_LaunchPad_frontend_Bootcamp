@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { BACKEND_URL } from '../constants.js';
-import { Button, Text, createStyles } from '@mantine/core';
+import { Button, createStyles } from '@mantine/core';
 import '../Components/css/CadetChaptProgress.css';
-import SLDashboardlinks from './SLDashboardlinks.js';
+
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -19,12 +19,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const CadetChaptProgress = ({ cadetId, cadetName }) => {
+const CadetChaptProgress = ({ cadetId }) => {
   // const CadetChaptProgress = () => {
   //here map out the cadetChapters
   const [progress, setProgress] = useState([]);
-  const [singleProgress, setSingleProgress] = useState([]);
-  const [completedChaps, setCompletedChaps] = useState({});
 
   const { sectionId } = useParams();
   const { classes } = useStyles();

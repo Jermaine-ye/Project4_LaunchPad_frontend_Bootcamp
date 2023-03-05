@@ -1,40 +1,16 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {
-  AppShell,
-  Burger,
-  Header,
-  MediaQuery,
-  Navbar,
-  Text,
-  Image,
-  Button,
-  useMantineTheme,
-  Title,
-} from '@mantine/core';
+import { AppShell, Navbar, Text, Image, Title } from '@mantine/core';
 
-import Profile from './Profile';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import { ThemeContext } from '@emotion/react';
-import DisplayMarkdown from './DisplayMarkdown';
+import { Link, Route, Routes } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-
 import Rlogo from '../images/rocket-logo.png';
 import { IconHome2, IconCalendarEvent } from '@tabler/icons';
-
 import CadetLandingPage from './CadetLandingPage';
 import MainMap from './CourseComponents/MainMap';
 import Welcome from './CourseComponents/Welcome';
-import Logistics from './CourseComponents/Logistics';
-import GeneralRef from './CourseComponents/GeneralRef';
-import Foundations from './CourseComponents/Foundations';
 import Frontend from './CourseComponents/Frontend';
-import FullStack from './CourseComponents/FullStack';
-import Backend from './CourseComponents/Backend';
-import Capstone from './CourseComponents/Capstone';
-import Algorithms from './CourseComponents/Algorithms';
-import InterviewPrep from './CourseComponents/InterviewPrep';
 import Schedule from './Schedule';
 import Loading from './Loading';
 import { useAuth } from './AuthContext';
@@ -103,9 +79,6 @@ const CadetDashboard = () => {
           </Title>
           <Navbar.Section grow mt="lg">
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {/* <Text component={Link} variant="link" to="/">
-                  Home Page
-                </Text> */}
               <Text
                 ta="center"
                 fw={500}
@@ -135,61 +108,33 @@ const CadetDashboard = () => {
               <Text ta="left" component={Link} variant="link">
                 🛠️Logistics
               </Text>
-              <Text
-                ta="left"
-                component={Link}
-                variant="link"
-                // to="/general-ref/3"
-              >
+              <Text ta="left" component={Link} variant="link">
                 📚General Reference
               </Text>
-              <Text
-                ta="left"
-                component={Link}
-                variant="link"
-                // to="/foundations/4"
-              >
+              <Text ta="left" component={Link} variant="link">
                 💎Foundations
               </Text>
               <Text ta="left" component={Link} variant="link" to="/frontend/5">
                 🖼️Frontend
               </Text>
-              <Text
-                ta="left"
-                component={Link}
-                variant="link"
-                // to="/full-stack/6"
-              >
+              <Text ta="left" component={Link} variant="link">
                 🏭Full Stack
               </Text>
               <Text ta="left" component={Link} variant="link">
-                {/* <Text ta="left" component={Link} variant="link" to="/backend/7"> */}
                 🤖Backend
               </Text>
               <Text ta="left" component={Link} variant="link">
-                {/* <Text ta="left" component={Link} variant="link" to="/capstone/8"> */}
                 ⛰️Capstone
               </Text>
-              <Text
-                ta="left"
-                component={Link}
-                variant="link"
-                // to="/algorithms/9"
-              >
+              <Text ta="left" component={Link} variant="link">
                 🧮Algorithms
               </Text>
-              <Text
-                ta="left"
-                component={Link}
-                variant="link"
-                // to="/interview-prep/10"
-              >
+              <Text ta="left" component={Link} variant="link">
                 💼Interview Prep
               </Text>
             </div>
           </Navbar.Section>
           <Navbar.Section>
-            {/* <Text className="footer-text">Footer</Text> */}
             <LogoutButton />
             <br />
             <br />
@@ -201,18 +146,7 @@ const CadetDashboard = () => {
         <Route path="/" element={<CadetLandingPage />}>
           <Route path="/main-map" element={<MainMap />} />
           <Route path="/welcome/:sectionId" element={<Welcome />} />
-          <Route path="/logistics/:sectionId" element={<Logistics />} />
-          <Route path="/general-ref/:sectionId" element={<GeneralRef />} />
-          <Route path="/foundations/:sectionId" element={<Foundations />} />
           <Route path="/frontend/:sectionId" element={<Frontend />} />
-          <Route path="/full-stack/:sectionId" element={<FullStack />} />
-          <Route path="/backend/:sectionId" element={<Backend />} />
-          <Route path="/capstone/:sectionId" element={<Capstone />} />
-          <Route path="/algorithms/:sectionId" element={<Algorithms />} />
-          <Route
-            path="/interview-prep/:sectionId"
-            element={<InterviewPrep />}
-          />
         </Route>
         <Route path="/schedule" element={<Schedule />} />
       </Routes>

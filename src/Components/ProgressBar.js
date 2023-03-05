@@ -1,12 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { Progress, Text, Title } from "@mantine/core";
-import { BACKEND_URL } from "../constants.js";
-import { useAuth } from "./AuthContext";
-import axios from "axios";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { Progress, Title } from '@mantine/core';
+import { BACKEND_URL } from '../constants.js';
+import { useAuth } from './AuthContext';
+import axios from 'axios';
 
 const ProgressBar = () => {
-  const [sectionProgress, setSectionProgress] = useState("");
+  const [sectionProgress, setSectionProgress] = useState('');
   const [numOfSection, setNumOfSection] = useState(10);
   const { cadetInfo } = useAuth();
 
@@ -17,7 +17,7 @@ const ProgressBar = () => {
           `${BACKEND_URL}/cadetSections/completed-progress-status?cadetId=${cadetInfo.id}`
         );
 
-        console.log("section progress", response.data);
+        console.log('section progress', response.data);
         setSectionProgress(response.data.length);
       } catch (err) {
         console.log(err.response.data);
@@ -27,10 +27,8 @@ const ProgressBar = () => {
   }, []);
 
   const sectionProgressNum = (sectionProgress / numOfSection) * 100;
-  // const chaptProgressNum = (chaptProgress / numOfChapt) * 100;
 
-  // const chaptProgressLabel = chaptProgressNum.toFixed() + '%';
-  const sectionProgressLabel = Number(sectionProgressNum).toFixed() + "%";
+  const sectionProgressLabel = Number(sectionProgressNum).toFixed() + '%';
 
   return (
     <>
@@ -46,16 +44,6 @@ const ProgressBar = () => {
         label={sectionProgressLabel}
       />
       <br />
-      {/* <Title order={6}>Section Progress:</Title> */}
-
-      {/* <Progress
-        color="pink"
-        // mt="sm"
-        radius="xl"
-        size={20}
-        value={chaptProgressNum}
-        label={chaptProgressLabel}
-      /> */}
     </>
   );
 };

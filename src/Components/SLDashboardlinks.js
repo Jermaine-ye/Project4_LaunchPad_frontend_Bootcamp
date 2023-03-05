@@ -1,17 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, useNavigate } from 'react-router-dom';
-import {
-  createStyles,
-  Button,
-  Group,
-  Text,
-  Image,
-  Container,
-  Title,
-  Paper,
-  filterProps,
-  List,
-} from '@mantine/core';
+import { useNavigate } from 'react-router-dom';
+import { createStyles, Button } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   button: {
@@ -31,7 +20,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const SLDashboardlinks = ({ cadetNames, cadetIdList, sectProgress }) => {
+const SLDashboardlinks = () => {
   const navigate = useNavigate();
   const { classes } = useStyles();
 

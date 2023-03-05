@@ -1,7 +1,6 @@
-import React from "react";
-import { Card, Text, Title, Image, Container, Grid } from "@mantine/core";
-import LoginButton from "./LoginButton";
-import "./css/RocketMainPage.css";
+import React from 'react';
+import LoginButton from './LoginButton';
+import './css/RocketMainPage.css';
 
 export default function RocketMainPage() {
   return (

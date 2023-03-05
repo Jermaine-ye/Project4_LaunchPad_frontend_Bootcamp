@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { BACKEND_URL } from '../constants.js';
-import { Button, Text, Title } from '@mantine/core';
+import { Button } from '@mantine/core';
 import '../Components/css/CadetChaptProgress.css';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -9,10 +9,7 @@ import axios from 'axios';
 const CadetSectionProgress = ({ cadetId }) => {
   //here map out the cadetChapters
   const [progress, setProgress] = useState([]);
-  const [singleProgress, setSingleProgress] = useState([]);
   const [markCompleted, setMarkCompleted] = useState();
-  const [completedSects, setCompletedSects] = useState({});
-  const { sectionId } = useParams();
 
   useEffect(() => {
     const fetchSections = async () => {
@@ -29,8 +26,6 @@ const CadetSectionProgress = ({ cadetId }) => {
     };
 
     fetchSections();
-
-    // sectId();
   }, [markCompleted]);
 
   let allSectionProgress = progress.map((section) => {
@@ -44,12 +39,7 @@ const CadetSectionProgress = ({ cadetId }) => {
             </Button>
           </>
         ) : (
-          <>
-            {/* <Button className="section-btn" color="gray">
-              {section.sectionId}
-              {section.completed}
-            </Button> */}
-          </>
+          <></>
         )}
       </>
     );

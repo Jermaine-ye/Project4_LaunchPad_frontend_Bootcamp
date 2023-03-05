@@ -1,21 +1,11 @@
-import { useEffect, useState } from "react";
-import "./css/DisplayMarkdown.css";
-import Markdown from "markdown-to-jsx";
-import Code from "./Code";
-import { database, storage } from "../firebase";
-import {
-  getDownloadURL,
-  ref as storageRef,
-  uploadBytes,
-} from "firebase/storage";
-import axios from "axios";
-import { Modal, Button } from "@mantine/core";
-import Forum from "./Forum";
-
-const MARKDOWN_FOLDER_NAME = "markdown";
+import { useEffect, useState } from 'react';
+import './css/DisplayMarkdown.css';
+import Markdown from 'markdown-to-jsx';
+import Code from './Code';
+import axios from 'axios';
 
 function DisplayMarkdown({ markdown }) {
-  const [post, setPost] = useState("");
+  const [post, setPost] = useState('');
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -26,14 +16,6 @@ function DisplayMarkdown({ markdown }) {
       getProps();
     }
   }, [markdown]);
-
-  // useEffect(() => {
-  //   axios.get(markdown.markdown).then((res) => {
-  //     setPost(res.data);
-  //   });
-  // }, [markdown]);
-
-  // console.log(post);
 
   return (
     <div className="DisplayMarkdown-body">
@@ -52,7 +34,6 @@ function DisplayMarkdown({ markdown }) {
       >
         {post}
       </Markdown>
-      {/* <Forum /> */}
     </div>
   );
 }

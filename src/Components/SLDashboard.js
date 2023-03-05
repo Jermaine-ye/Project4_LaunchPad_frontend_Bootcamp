@@ -1,37 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import {
-  AppShell,
-  Burger,
-  Header,
-  MediaQuery,
-  Navbar,
-  Text,
-  Image,
-  Button,
-  Title,
-} from '@mantine/core';
-
-import Profile from './Profile';
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import { ThemeContext } from '@emotion/react';
-import DisplayMarkdown from './DisplayMarkdown';
-import CadetDashboard from './CadetDashboard';
+import { AppShell, Navbar, Text, Image, Title } from '@mantine/core';
+import { Link, Route, Routes } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useAuth0, withAuthenticationRequired } from '@auth0/auth0-react';
-import CadetChaptProgress from './CadetChaptProgress';
 import Forum from './Forum';
-import ForumChapter from './ForumChapter';
-import ForumSection from './ForumSection';
 import LogoutButton from './LogoutButton';
 import axios from 'axios';
 import { BACKEND_URL } from '../constants';
-
 import Rlogo from '../images/rocket-logo.png';
 import { IconHome2, IconCalendarEvent } from '@tabler/icons';
-
-import MainMap from './CourseComponents/MainMap';
-
 import SLLandingPage from './SLLandingPage';
 import Schedule from './Schedule';
 import Loading from './Loading';
@@ -183,18 +161,11 @@ const SLDashboard = () => {
             path="/submissions"
             element={<GitHubSubmissionsDisplay data={submissionsData} />}
           />
-
-          {/* <Route path="/main-map/:sectionId" element={<CadetChaptProgress />} /> */}
         </Route>
 
         <Route path="/forum" element={<Forum />}>
           <Route path="/forum/:sectionId" element={<Forum />} />
           <Route path="/forum/:sectionId/:chapterId" element={<Forum />} />
-          {/* <Route path="/forum/:sectionId/:chapterId" element={<Forum />} /> */}
-          {/* <Route
-            path="/cadet-progress/:cadetId"
-            element={<SingleCadetProgress />}
-          /> */}
         </Route>
         <Route path="/schedule" element={<Schedule />} />
       </Routes>

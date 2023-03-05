@@ -31,11 +31,6 @@ const useStyles = createStyles((theme) => ({
     paddingLeft: theme.spacing.xl * 2,
     height: 170,
 
-    // '&:hover': {
-    //   boxShadow: theme.shadows.md,
-    //   transform: 'scale(1.02)',
-    // },
-
     '&::before': {
       content: '""',
       position: 'absolute',

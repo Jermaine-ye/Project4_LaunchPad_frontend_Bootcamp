@@ -1,27 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import {
-  Textarea,
-  Button,
-  TextInput,
-  Card,
-  Title,
-  Text,
-  Paper,
-} from "@mantine/core";
-import { BACKEND_URL } from "../constants.js";
-import { SLPostBlock } from "./SLPostBlock.js";
-import { List } from "@mantine/core";
-import SLPostForm from "./SLPostForm.js";
-import { useAuth } from "./AuthContext";
-
-import axios from "axios";
-import { connectStorageEmulator } from "firebase/storage";
-import "./css/Forum.css";
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Card, Title, Text } from '@mantine/core';
+import { BACKEND_URL } from '../constants.js';
+import { SLPostBlock } from './SLPostBlock.js';
+import { List } from '@mantine/core';
+import SLPostForm from './SLPostForm.js';
+import { useAuth } from './AuthContext';
+import axios from 'axios';
+import './css/Forum.css';
 
 const ForumChapter = () => {
-  const [sections, setSections] = useState([]);
   const [slId, setSlId] = useState();
   const { chapterId } = useParams();
   const [posts, setPosts] = useState([]);
@@ -37,7 +26,7 @@ const ForumChapter = () => {
         })
         .then((response) => {
           setPosts(response.data);
-          console.log("what is in post", response.data);
+          console.log('what is in post', response.data);
         });
     };
     getPosts();
@@ -54,7 +43,7 @@ const ForumChapter = () => {
     setPosts(posts.filter((prevPost) => prevPost.id !== postId));
   };
 
-  console.log("sl info", slInfo);
+  console.log('sl info', slInfo);
   return (
     <div className="post-list">
       <Title fw={700} order={2} underline border color="#0B7285">
@@ -78,6 +67,7 @@ const ForumChapter = () => {
             {posts?.map((post) => (
               <SLPostBlock
                 key={post.id}
+                s
                 chapterId={post.chapterId}
                 post={post}
                 sl={slId}
@@ -87,7 +77,6 @@ const ForumChapter = () => {
               />
             ))}
           </List>
-          {/* <SLPostForm chapter={chapterId} onPostUpdate={onPostUpdate} /> */}
         </Card>
       ) : (
         <Title className="forum-null-msg" order={3} color="yellow">

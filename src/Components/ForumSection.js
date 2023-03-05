@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Textarea, Button, TextInput, Text, createStyles } from '@mantine/core';
+import { Button, createStyles } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { BACKEND_URL } from '../constants.js';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ChapterPosts from './ChapterPosts.js';
 
 const useStyles = createStyles((theme) => ({
   button: {
@@ -55,7 +54,6 @@ const ForumSection = () => {
         <Button
           key={chapter.id}
           className={classes.button}
-          // className="chapter-list-btns"
           color="teal"
           onClick={() => navigate(`/forum/${sectionId}/${chapter.id}`)}
         >

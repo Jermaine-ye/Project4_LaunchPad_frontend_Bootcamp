@@ -1,11 +1,10 @@
-import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const PrivateRoutesCadet = ({ component: Component, ...rest }) => {
   const { user } = useAuth0();
   console.log(user);
-  // let auth = user[`https://any-namespace/roles`].length === 0;
   let auth = 0;
   return auth ? <Outlet /> : <Navigate to="/" />;
 };

@@ -1,19 +1,17 @@
-import React, { useState } from "react";
-import { TextInput, Button, Group, Box } from "@mantine/core";
-import { useForm } from "@mantine/form";
-import axios from "axios";
-import { BACKEND_URL } from "../constants";
+import React, { useState } from 'react';
+import { TextInput, Button, Group, Box } from '@mantine/core';
+import axios from 'axios';
+import { BACKEND_URL } from '../constants';
 
 const GitHubSubmission = ({ id, cadetId }) => {
-  const [opened, setOpened] = useState(false);
-  const [repoUrl, setRepoUrl] = useState("");
+  const [repoUrl, setRepoUrl] = useState('');
 
   const handleChange = (event) => {
     setRepoUrl(event.target.value);
   };
 
   const handleSubmit = () => {
-    console.log("handleSubmit", id);
+    console.log('handleSubmit', id);
     axios
       .put(`${BACKEND_URL}/gitHubSubmissions`, {
         cadetId: Number(cadetId),
@@ -21,13 +19,13 @@ const GitHubSubmission = ({ id, cadetId }) => {
         repoUrl: String(repoUrl),
       })
       .then((res) => {
-        console.log("resdata:", res.data);
+        console.log('resdata:', res.data);
       })
       .catch((err) => {
         console.log(err);
       });
 
-    setRepoUrl("SUBMITTED!");
+    setRepoUrl('SUBMITTED!');
   };
 
   return (
