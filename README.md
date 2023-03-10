@@ -1,13 +1,26 @@
-# Rocket Academy Coding Bootcamp: Project 3 Frontend
+All in one academic progress tracker with integrated study materials and community forum – Rocket Academy Bootcamp. 
 
-## Available Scripts
+![Proj 4 cover](https://user-images.githubusercontent.com/102209911/224346309-a56181fd-c994-4e10-a359-52da96869d44.jpg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). In the project directory, you can run:
 
-### `npm start`
+Please have subtitles on for project walkthrough :)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://www.youtube.com/watch?v=42r1k0LWyD8&list=PLxwmeZaKMKvNYg35dVbYuydFbZ-jN5q8x&index=3
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Boot Camp Capstone project with 2 other team mates.
+
+Tech Stack:
+Frontend
+- React.js
+- Axios
+- Mantine UI Library
+
+Authentication and images
+-Auth0
+-Firebase storage
+
+Backend
+-Node.js
+-Express.js
+-Sequelize
+-PostgreSQL
