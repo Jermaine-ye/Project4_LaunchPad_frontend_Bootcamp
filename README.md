@@ -24,3 +24,6 @@ Backend
 -Express.js
 -Sequelize
 -PostgreSQL
+
+Please visit:
+bit.ly/jyjm-portfolio for more details :)
